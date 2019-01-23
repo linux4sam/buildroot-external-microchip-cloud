@@ -1,0 +1,47 @@
+From f038492fe0345f8f8a876ffecc691819ead1d465 Mon Sep 17 00:00:00 2001
+From: Larry Gass <larry.gass@microchip.com>
+Date: Tue, 22 Jan 2019 08:26:50 -0700
+Subject: [PATCH] DTS file for SAMA5D2_xplained changed flexcom0 to I2C
+
+Signed-off-by: Larry Gass <larry.gass@microchip.com>
+---
+ arch/arm/boot/dts/at91-sama5d2_xplained.dts | 18 +++++++++++-------
+ 1 file changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/arch/arm/boot/dts/at91-sama5d2_xplained.dts b/arch/arm/boot/dts/at91-sama5d2_xplained.dts
+index 8eeac13..c97abd9 100644
+--- a/arch/arm/boot/dts/at91-sama5d2_xplained.dts
++++ b/arch/arm/boot/dts/at91-sama5d2_xplained.dts
+@@ -347,18 +347,22 @@
+ 			};
+ 
+ 			flx0: flexcom@f8034000 {
+-				atmel,flexcom-mode = <ATMEL_FLEXCOM_MODE_USART>;
+-				status = "disabled"; /* conflict with ISC_D2 & ISC_D3 data pins */
++				atmel,flexcom-mode = <ATMEL_FLEXCOM_MODE_TWI>;
++				status = "okay";
+ 
+-				uart5: serial@200 {
+-					compatible = "atmel,at91sam9260-usart";
+-					reg = <0x200 0x200>;
++				i2c3: i2c@600 {
++				    i2c-sda-hold-time-ns = <350>;
++					compatible = "atmel,sama5d2-i2c";
++					reg = <0x600 0x200>;
+ 					interrupts = <19 IRQ_TYPE_LEVEL_HIGH 7>;
++					dmas = <0>, <0>;
++					dma-names = "tx", "rx";
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					clocks = <&flx0_clk>;
+-					clock-names = "usart";
+ 					pinctrl-names = "default";
+ 					pinctrl-0 = <&pinctrl_flx0_default>;
+-					atmel,fifo-size = <32>;
++					atmel,fifo-size = <16>;
+ 					status = "okay";
+ 				};
+ 			};
+-- 
+2.7.4
+

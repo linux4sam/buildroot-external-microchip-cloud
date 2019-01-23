@@ -1,0 +1,26 @@
+From 1870b2e241126ee81a54198718ffdb18fece2b8b Mon Sep 17 00:00:00 2001
+From: Larry Gass <larry.gass@microchip.com>
+Date: Mon, 21 Jan 2019 17:52:35 -0700
+Subject: [PATCH] Changed I2C bus to bus 0
+
+Signed-off-by: Larry Gass <larry.gass@microchip.com>
+---
+ lib/atca_cfgs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/atca_cfgs.c b/lib/atca_cfgs.c
+index 79cf286..2df62eb 100644
+--- a/lib/atca_cfgs.c
++++ b/lib/atca_cfgs.c
+@@ -42,7 +42,7 @@ ATCAIfaceCfg cfg_ateccx08a_i2c_default = {
+     .iface_type             = ATCA_I2C_IFACE,
+     .devtype                = ATECC608A,
+     .atcai2c.slave_address  = 0xC0,
+-    .atcai2c.bus            = 1,
++    .atcai2c.bus            = 0,
+     .atcai2c.baud           = 400000,
+     //.atcai2c.baud = 100000,
+     .wake_delay             = 1500,
+-- 
+2.7.4
+
