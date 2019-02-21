@@ -1,2 +1,3 @@
 source "$BR2_EXTERNAL_GREENKEY_PATH/package/cryptoauthlib/Config.in"
 source "$BR2_EXTERNAL_GREENKEY_PATH/package/libp11/Config.in"
+source "$BR2_EXTERNAL_GREENKEY_PATH/package/python-cryptoauthlib/Config.in"

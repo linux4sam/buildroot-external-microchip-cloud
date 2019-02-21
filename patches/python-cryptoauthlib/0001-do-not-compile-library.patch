@@ -1,0 +1,19 @@
+--- a/setup.py	2019-01-24 16:59:31.203307954 -0700
++++ b/setup.py	2019-01-24 16:59:58.431307850 -0700
+@@ -45,6 +45,8 @@ if sys.platform is 'win32':
+ else:
+     _PACKAGE_DATA['libcryptoauth'] = ['libcryptoauth.so']
+ 
++_PACKAGE_DATA = {}
++
+ # See if this is being built from an sdist structure
+ if os.path.exists('lib') and os.path.exists('third_party'):
+     _sdist_build = True
+@@ -58,6 +60,7 @@ try:
+ except:
+     _EXTENSIONS = [Extension('cryptoauthlib', sources=[])]
+ 
++_EXTENSIONS = None
+ 
+ def copy_udev_rules(target):
+     if _sdist_build:
